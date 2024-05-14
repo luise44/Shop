@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace Data.Repositories.Interfaces
 {
-    public interface ICustomerRepository : IBaseRepository<Customer>
+    public interface IOrderRepository : IBaseRepository<Order>
     {
-        Task<List<Customer>> GetCustomersByName(int pageNumber, int pageSize, string searchString);
     }
 }

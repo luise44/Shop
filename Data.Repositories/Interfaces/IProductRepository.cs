@@ -9,5 +9,6 @@ namespace Data.Repositories.Interfaces
 {
     public interface IProductRepository : IBaseRepository<Product>
     {
+        Task<List<Product>> GetAll(int pageNumber, int pageSize);
     }
 }

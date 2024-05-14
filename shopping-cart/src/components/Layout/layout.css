@@ -1,0 +1,24 @@
+.layout-header ul { 
+	margin: 0; 
+	padding: 5px; 
+	list-style-type: none; 
+	text-align: center; 
+	background-color: #000; 
+} 
+ 
+.layout-header ul li {  
+	display: inline; 
+} 
+ 
+.layout-header ul li a { 
+	text-decoration: none; 
+	padding: .2em 1em; 
+	color: #fff; 
+	background-color: #000; 
+} 
+ 
+.layout-header ul li a:hover { 
+	color: #000; 
+	background-color: #fff; 
+} 
+ 

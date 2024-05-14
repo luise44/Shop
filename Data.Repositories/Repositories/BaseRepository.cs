@@ -1,5 +1,6 @@
 ﻿using Data.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Shop.Data;
 using Shop.Data.Entities;
 using System;
 using System.Collections.Generic;
@@ -22,22 +23,29 @@ namespace Data.Repositories.Repositories
             _context = context;
         }
 
-        public void Add(T Entity)
+        public async Task<IList<T>> GetAll()
+        {
+            return await _context
+                .Set<T>()
+                .ToListAsync();
+        }
+
+        public async void Add(T Entity)
         {
             _dbSet.Add(Entity);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public void Update(T Entity)
+        public async void Update(T Entity)
         {
             _dbSet.Update(Entity);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public void Delete(T Entity)
+        public async void Delete(T Entity)
         {
             _dbSet.Remove(Entity);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
     }
