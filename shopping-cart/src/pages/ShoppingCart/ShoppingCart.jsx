@@ -8,7 +8,7 @@ const ShoppingCart = () => {
             <input></input>
             {
                 Array.from({ length: 4 }).map((_, index) => (
-                    <div>
+                    <div  key={index} >
                         <ShoppingCartItem key={index} />
                     </div>
                 ))

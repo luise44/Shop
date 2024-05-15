@@ -1,0 +1,17 @@
+.catalog__customer-container,
+.catalog__products-container {
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.catalog__pagging-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.catalog__pagging-container-item {
+    display: flex;
+}
