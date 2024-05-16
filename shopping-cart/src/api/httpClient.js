@@ -1,5 +1,7 @@
+const baseApiUrl = "https://localhost:44380/";
+
 export const fetchData = async (url) => {
-    const rawResponse = await fetch(url);
+    const rawResponse = await fetch(baseApiUrl + url);
     const response = await rawResponse.json();
   
     if (rawResponse.status === 200) {
@@ -11,7 +13,7 @@ export const fetchData = async (url) => {
 
 
 export const postData = async (url, data) => {
-  const rawResponse = await fetch(url, {
+  const rawResponse = await fetch(baseApiUrl + url, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
