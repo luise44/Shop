@@ -71,10 +71,19 @@ Make sure you have the following installed:
 ## Setting Up the front End
 
 Is necessary to update the front end api url to be able to get the api data from the fron app
+https://github.com/luise44/Shop/blob/b950bae69f39ee5370dcb19b6abde80fdc86c1f0/shopping-cart/src/api/httpClient.js#L1
 
 ## Setting Up the back End
 
 Is necessary to update the back end database string connection in order to connect to the database
+https://github.com/luise44/Shop/blob/b950bae69f39ee5370dcb19b6abde80fdc86c1f0/Shop.Api/appsettings.json#L10
+
+
+## Setting Up the Database
+
+You will find a SQL script that can bee used to create the schema and to populate the data
+
+
 
 ## Using the Application
 

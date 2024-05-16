@@ -23,4 +23,8 @@
     <ProjectReference Include="..\Shop.Data.Entities\Shop.Data.Entities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Database Scripts\" />
+  </ItemGroup>
+
 </Project>
