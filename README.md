@@ -82,7 +82,7 @@ https://github.com/luise44/Shop/blob/b950bae69f39ee5370dcb19b6abde80fdc86c1f0/Sh
 ## Setting Up the Database
 
 You will find a SQL script that can bee used to create the schema and to populate the data
-
+https://github.com/luise44/Shop/blob/master/Shop.Data/Database%20Scripts/database.sql
 
 
 ## Using the Application
