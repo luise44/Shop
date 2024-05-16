@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shop.Data.Entities
+namespace Data.Repositories.Interfaces
 {
-    public class BaseEntity : IBaseEntity
+    public interface IEntityWithId
     {
+        int Id { get; set; }
     }
 }

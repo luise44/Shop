@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace Data.Repositories.Repositories
 {
     public class BaseRepository<T, TContext> : IBaseRepository<T> 
-        where T : BaseEntity, new()
+        where T : EntityWithId, new()
         where TContext : DbContext
     {
         readonly TContext _context;
@@ -23,6 +23,13 @@ namespace Data.Repositories.Repositories
             _context = context;
         }
 
+        public T GetById(int id)
+        {
+            return _context
+                .Set<T>()
+                .First(x => x.Id == id);
+        }
+
         public async Task<IList<T>> GetAll()
         {
             return await _context
@@ -30,22 +37,29 @@ namespace Data.Repositories.Repositories
                 .ToListAsync();
         }
 
-        public async void Add(T Entity)
+        public async Task Add(T Entity)
         {
             _dbSet.Add(Entity);
             await _context.SaveChangesAsync();
         }
 
-        public async void Update(T Entity)
+        public async Task Update(T Entity)
         {
             _dbSet.Update(Entity);
             await _context.SaveChangesAsync();
         }
 
-        public async void Delete(T Entity)
+        public async Task Delete(T Entity)
         {
             _dbSet.Remove(Entity);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<int> Count()
+        {
+            return await _context
+                .Set<T>()
+                .CountAsync();
         }
 
     }

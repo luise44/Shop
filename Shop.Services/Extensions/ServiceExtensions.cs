@@ -17,6 +17,7 @@ namespace Shop.Services.Extensions
             return services
                 .AddRepositories()
                 .AddTransient<IProductService, ProductService>()
+                .AddTransient<IOrderService, OrderService>()
                 .AddTransient<ICustomerService, CustomerService>();
         }
     }

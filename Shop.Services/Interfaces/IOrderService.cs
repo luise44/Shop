@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Shop.Services.Interfaces
 {
-    public interface IProductService
+    public interface IOrderService
     {
-        Task<ProductsPaginatedDto> GetAllProductsPaginated(int pageNumber, int pageSize);
+        Task CreateOrder(OrderDto order);
     }
 }

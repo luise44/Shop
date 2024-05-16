@@ -1,0 +1,18 @@
+.customer-selector {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.customer-selector__suggestions {
+    border: 1px solid lightgray;
+    cursor: pointer;
+}
+
+.customer-selector__suggestion {
+    padding: 3px;
+}
+
+.customer-selector__customer-selected-container {
+    display: flex;
+}

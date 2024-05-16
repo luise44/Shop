@@ -1,20 +1,27 @@
 import ShoppingCartDetails from "../../components/ShoppingCart/ShoppingCartDetails";
 import ShoppingCartItem from "../../components/ShoppingCart/ShoppingCartItem";
+import { useSelector } from "react-redux";
+
+import './shoppingCart.css'; 
+
 
 const ShoppingCart = () => {
+    const { products } = useSelector((state) => state.shoppingCart);
 
     return (
-        <div>
-            <input></input>
+        <div className="shopping-cart">
+            <div className="shopping-cart__products-container">
             {
-                Array.from({ length: 4 }).map((_, index) => (
-                    <div  key={index} >
-                        <ShoppingCartItem key={index} />
+                products && products.map((item) => (
+                    <div key={item.id} >
+                        <ShoppingCartItem product={item}/>
                     </div>
                 ))
             }
-            <ShoppingCartDetails />
-            <button>Add to Shopping Cart</button>
+            </div>
+            <div className="shopping-cart__details-container">
+                <ShoppingCartDetails />
+            </div>
         </div>
     );
 

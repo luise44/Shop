@@ -18,7 +18,8 @@ namespace Data.Repositories.Repositories
         {
             return await _shopContext
                 .Set<Customer>()
-                .Where(x=> x.Name.Contains(searchString))
+                .Where(x=> x.Name.Contains(searchString) ||
+                    x.LastName.Contains(searchString))
                 .OrderBy(x => x.Name)
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)

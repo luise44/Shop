@@ -1,4 +1,35 @@
 .catalog-item {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+    border: 1px solid green;
+    margin: 5px;
+}
+
+.catalog-item__product-card {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+.catalog-item__product-price {
+    display: flex;
+    width: 200px;
+    justify-content: end;
+    margin-right: 20px;
+}
+
+.catalog-item__product-quantity {
+    display: flex;
+    max-height: 25px;
+}
+
+.catalog-item__product-card-stock {
+    margin-left: 20px;
+}
+
+.catalog-item__product-subTotal {
+    text-align: right;
+    width: 100px;
 }

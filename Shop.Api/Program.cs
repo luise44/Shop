@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Options;
 using Shop.Data;
 using Shop.Services.Automapper;
 using Shop.Services.Extensions;
@@ -12,6 +13,13 @@ builder.Services.AddServices();
 var app = builder.Build();
 
 app.MapControllers();
-app.UseCors(x=> x.SetIsOriginAllowed(o => true));
+app.UseCors(x=> 
+    { 
+        x
+        .AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader();
+    }
+);
 
 app.Run();

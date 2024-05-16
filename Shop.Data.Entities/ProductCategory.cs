@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Shop.Data.Entities
 {
-    public class ProductCategory : BaseEntity
+    public class ProductCategory
     {
         public int ProductId { get; set; }
         public Product Product { get; set; }

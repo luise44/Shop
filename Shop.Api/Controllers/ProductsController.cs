@@ -12,35 +12,10 @@ namespace Shop.Api.Controllers
 
         // GET: api/<ProductsController>
         [HttpGet("{pageNumber}/{pageSize}")]
-        public async Task<IEnumerable<ProductDto>> Get(int pageNumber, int pageSize)
+        public async Task<ProductsPaginatedDto> Get(int pageNumber, int pageSize)
         {
             return await _productService
-                .GetAllProducts(pageNumber, pageSize);
-        }
-
-        // GET api/<ProductsController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<ProductsController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<ProductsController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<ProductsController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+                .GetAllProductsPaginated(pageNumber, pageSize);
         }
     }
 }

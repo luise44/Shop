@@ -10,7 +10,9 @@ namespace Shop.Data
             return services.AddDbContext<ShopContext>(options =>
             {
                 options.UseSqlServer(connectionString);
-            });
+            },
+                ServiceLifetime.Scoped
+            );
         }
     }
 }

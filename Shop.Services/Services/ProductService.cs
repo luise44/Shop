@@ -18,12 +18,22 @@ namespace Shop.Services.Services
         private readonly IProductRepository _productRepository = productRepository;
         private readonly IMapper _mapper = mapper;
 
-        public async Task<List<ProductDto>> GetAllProducts(int pageNumber, int pageSize)
+        public async Task<ProductsPaginatedDto> GetAllProductsPaginated(int pageNumber, int pageSize)
         {
-            return (await _productRepository
+            var totalRecords = await _productRepository.Count();
+
+            var products = (await _productRepository
                 .GetAll(pageNumber, pageSize))
                 .Select(x => _mapper.Map<ProductDto>(x))
                 .ToList();
+
+            return new ProductsPaginatedDto
+            { 
+                PageNumber = pageNumber,
+                TotalPages = totalRecords / pageSize,
+                TotalRecords = totalRecords,
+                Products = products
+            }; 
         }
     }
 }

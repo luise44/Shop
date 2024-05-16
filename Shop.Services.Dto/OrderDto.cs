@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shop.Data.Entities
+namespace Shop.Services.Dto
 {
-    public class Customer : EntityWithId
+    public record OrderDto
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string LastName { get; set; }
+        public int CustomerId { get; set; }
+        public IList<OrderDetailDto> OrderDetails { get; set; }
     }
 }

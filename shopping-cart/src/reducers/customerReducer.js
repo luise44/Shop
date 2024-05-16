@@ -3,28 +3,36 @@ import { findCustomerByName } from "../api/customers";
 
 
 const initialState = {
-    customers : []
+    customers : [],
+    customerSelected: null
 };
 
 export const findCustomers = createAsyncThunk(
     'customer/findCustomers',
     async (searchString) => {
-        return await findCustomerByName(searchString);
+        return {
+            customers: await findCustomerByName(searchString)
+        }
     }
 );
 
 const customerSlice = createSlice({
     name: 'customer',
     initialState,
-    reducers: {},
+    reducers: {
+        setCustomerSelected: (state, action) => {
+            state.customerSelected = action.payload.customer;
+            state.customers = [];
+        }
+    },
     extraReducers: (builder) => {
         builder.addCase(findCustomers.fulfilled, (state, action) => {
-            state.customers = action.payload;
+            state.customers = action.payload.customers;
         })
     }
 });
 
 
-export const { search } = customerSlice.actions;
+export const { search, setCustomerSelected } = customerSlice.actions;
 
 export default customerSlice.reducer;

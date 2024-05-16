@@ -1,43 +1,45 @@
 import { useEffect } from "react";
 import CatalogItem from "../../components/Catalog/CatalogItem"; 
-import CustomerSelector from "../../components/Customer/CustomerSelector";
 import './catalog.css';
 import { useSelector, useDispatch } from "react-redux";
-import { getProducts } from "../../reducers/productReducer";
+import { getProducts, nextPage, previousPage } from "../../reducers/productReducer";
 
 const Catalog = () => {
-    const products = useSelector((state) => state.product.products);
+    const { products, totalPages, pageNumber } = useSelector((state) => state.product);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getProducts());
-    }, [dispatch]);
+        dispatch(getProducts({ pageNumber, pageSize: 10 }));
+    }, [dispatch, pageNumber]);
 
     return (
         <div>
-            <div className="catalog__customer-container">
-                <CustomerSelector />
-            </div>
             <div className="catalog__products-container">
             {
-                products && products.map((item, index) => (
-                    <div  key={index} >
-                        <CatalogItem key={index} catalogItem={item}/>
-                    </div>
+                products && products.map((item) => (
+                    <CatalogItem key={item.id} product={item}/>
                 ))
             }
             </div>
             <div className="catalog__pagging-container">
-                <button className="catalog__pagging-container-item">
+                <button
+                    disabled={ pageNumber === 1}
+                    className="catalog__pagging-container-item"
+                    onClick={()=> dispatch(previousPage())}
+                >
                     <span>&#8592;</span>
-                    <span>Previous</span>
+                    <span className="catalog__pagging-container-item-label">Previous</span>
                 </button>
-                <button className="catalog__pagging-container-item">
-                    <span>Next</span>
+                Page {pageNumber} of {totalPages}
+                <button
+                    disabled={ pageNumber === totalPages}
+                    className="catalog__pagging-container-item"
+                    onClick={()=> dispatch(nextPage())}
+                >
+                    <span className="catalog__pagging-container-item-label">Next</span>
                     <span>&#8594;</span>
                 </button>
             </div>
-            <button>Add to Shopping Cart</button>
         </div>
     );
 }
